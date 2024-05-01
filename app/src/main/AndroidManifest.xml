@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ULLibraryOnlineSystem"
+        tools:targetApi="31">
+
+        <activity android:name=".activity.LoginActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Registration Event Page -->
+        <activity android:name=".activity.RegisterActivity" android:exported="true" />
+
+        <!-- User Center Page -->
+        <activity android:name=".activity.UserCenterActivity" android:exported="true" />
+
+        <!-- Administrator Center Page -->
+        <activity android:name=".activity.AdminCenterActivity" android:exported="true" />
+
+        <activity android:name=".activity.AddBookActivity" android:exported="true"/>
+
+        <!-- Other Activity Statements -->
+
+    </application>
+
+</manifest>

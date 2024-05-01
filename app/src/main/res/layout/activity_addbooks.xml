@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AdminCenterActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal|center_vertical"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_book_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#006400"
+        app:title="Add Book"
+        app:titleTextColor="#FFFFFF"
+        app:navigationIcon="@drawable/back"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <ImageView
+                android:id="@+id/add_book_img"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:src="@drawable/upimg"
+                android:layout_marginTop="45dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Book Cover"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+
+
+            <EditText
+                android:id="@+id/add_book_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please enter the name of the book."
+                android:layout_marginTop="50dp"
+
+                />
+            <EditText
+                android:id="@+id/add_book_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please enter the author of the book."
+                android:layout_marginTop="10dp"
+                android:gravity="top"
+                />
+
+            <EditText
+                android:id="@+id/add_book_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please enter a description of the book's content."
+                android:inputType="textMultiLine"
+                android:layout_marginTop="10dp"
+
+                android:gravity="top"
+                android:minLines="5"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:background="@android:drawable/edit_text"
+                />
+
+
+
+
+            <Button
+                android:id="@+id/add_book_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#006400"
+                android:textColor="#FFFFFF"
+                android:text="Publish Book"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

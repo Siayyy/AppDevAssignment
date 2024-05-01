@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_library_user"
+        android:icon="@drawable/ic_allbooks"
+        android:title="All Books" />
+    <item
+        android:id="@+id/navigation_requests_user"
+        android:icon="@drawable/ic_myrequests"
+        android:title="My Requests" />
+    <item
+        android:id="@+id/navigation_profile_user"
+        android:icon="@drawable/ic_me"
+        android:title="Me" />
+
+</menu>
