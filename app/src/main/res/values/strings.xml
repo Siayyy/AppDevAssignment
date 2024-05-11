@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ULLibraryOnlineSystem</string>
+    <string name="default_web_client_id">paste_your_client_id_here</string>
 </resources>

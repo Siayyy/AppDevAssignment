@@ -24,7 +24,7 @@
         android:id="@+id/textViewTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="UL Library Online System"
+        android:text="Library Online System"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="#000000"
