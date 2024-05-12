@@ -90,10 +90,10 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <EditText
-                            android:id="@+id/registerMajor"
+                            android:id="@+id/registerBirth"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:hint="Please input your department or major."
+                            android:hint="Your date of birth."
                             app:layout_constraintTop_toBottomOf="@+id/registerName"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"/>
@@ -103,7 +103,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="REGISTER NOW"
-                            app:layout_constraintTop_toBottomOf="@+id/registerMajor"
+                            app:layout_constraintTop_toBottomOf="@+id/registerBirth"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
