@@ -7,6 +7,8 @@ public class BorrowedBook {
         private String synopsis;
         private String coverImagePath;
 
+        private String pagecount;
+
         // constructor
         public BorrowedBook(int bookId, String title, String author, String synopsis, String coverImagePath) {
                 this.bookId = bookId;
@@ -14,6 +16,7 @@ public class BorrowedBook {
                 this.author = author;
                 this.synopsis = synopsis;
                 this.coverImagePath = coverImagePath;
+                this.pagecount = pagecount;
         }
 
         public String getTitle() {
