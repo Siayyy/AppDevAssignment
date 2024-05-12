@@ -26,14 +26,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // 创建用户表
+        // creat users table
         db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
                 "email TEXT PRIMARY KEY, " +
                 "password TEXT, " +
                 "name TEXT, " +
                 "major TEXT)");
 
-        // 创建书籍信息表
+        // creat books table
         db.execSQL("CREATE TABLE IF NOT EXISTS books (" +
                 "bookId INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "title TEXT, " +
@@ -41,10 +41,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "synopsis TEXT, " +
                 "coverImagePath TEXT)");
 
-        // 插入管理员数据
+        // insert admin data
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('admin@managementmail.ul.ie', '123456', 'Admin', 'Admin')");
 
-        // 插入用户数据
+        // insert users data
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('22371095@studentmail.ul.ie', '123456', 'Daniel', 'SoftwareDevelopment')");
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('22003932@studentmail.ul.ie', '123456', 'Song', 'MachineLearning')");
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('22098852@studentmail.ul.ie', '123456', 'Sia', 'SoftwareEngineering')");
@@ -53,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    // 方法来添加书籍到数据库
+    // Method to add books to the database
     public void addBookToLibrary(String title, String author, String synopsis, String coverImagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -66,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // 方法来获取所有的书籍列表
+    // Method to get a list of all the books
     public List<LibraryBook> getAllLibraryBooks() {
         List<LibraryBook> bookList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -96,7 +96,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    // 方法来获取用户已借阅的书籍列表
+    // Method to get a list of books that the user has borrowed
     public List<BorrowedBook> getUserBorrowedBooks(int userId) {
         List<BorrowedBook> borrowedBookList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -133,7 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // 检查用户是否存在
+    // check wehther the user already exist
     public boolean checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
@@ -143,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 
-    // 在 DBHelper 类中添加以下方法
+    // Add the following methods to the DBHelper class
     public void addUser(String email, String password, String name, String major) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -16,7 +16,7 @@ public class UserCenterFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // 使用 fragment_user_center.xml 作为布局文件
+        // Use fragment_user_center.xml as the layout file
         return inflater.inflate(R.layout.fragment_user_center, container, false);
     }
 }

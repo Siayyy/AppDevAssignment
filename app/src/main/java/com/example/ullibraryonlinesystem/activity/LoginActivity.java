@@ -15,7 +15,7 @@ import com.example.ullibraryonlinesystem.db.DBHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText emailEditText; // 改成 email
+    private EditText emailEditText; // change to email
     private EditText passwordEditText;
     private RadioGroup loginTypeRadioGroup;
     private Button loginButton;
@@ -27,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // 初始化控件
+        // Initialize the control
         dbHelper = new DBHelper(this);
-        emailEditText = findViewById(R.id.login_email); // ID 也变成 email
+        emailEditText = findViewById(R.id.login_email); // ID change to email
         passwordEditText = findViewById(R.id.login_pwd);
         loginTypeRadioGroup = findViewById(R.id.radioGroup);
         loginButton = findViewById(R.id.btnLogin);
@@ -46,17 +46,17 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                int selectedId = loginTypeRadioGroup.getCheckedRadioButtonId();  // 获取选择的 Radio Button ID
+                int selectedId = loginTypeRadioGroup.getCheckedRadioButtonId();  // Gets the selected Radio Button ID
 
                 if (selectedId == R.id.radioButtonAdmin) {
-                    // 检查管理员凭证
+                    // Check administrator verification
                     if (email.equals("admin@managementmail.ul.ie") && password.equals("123456")) {
                         startActivity(new Intent(LoginActivity.this, AdminCenterActivity.class));
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid admin credentials", Toast.LENGTH_SHORT).show();
                     }
                 } else if (selectedId == R.id.radioButtonUser) {
-                    // 检查普通用户凭证
+                    // Check user verification
                     if (dbHelper.checkUser(email, password)) {
                         startActivity(new Intent(LoginActivity.this, UserCenterActivity.class));
                     } else {
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 跳转到注册界面
+                // display the login page
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }

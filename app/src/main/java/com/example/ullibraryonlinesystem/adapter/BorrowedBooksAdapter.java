@@ -23,18 +23,18 @@ public class BorrowedBooksAdapter extends RecyclerView.Adapter<BorrowedBooksAdap
     @NonNull
     @Override
     public BorrowedBooksAdapter.BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 这里需要创建并返回一个新的 BookViewHolder 实例
-        // 通常包括加载布局文件并传递给 ViewHolder 构造函数
+        // need to create and return a new BookViewHolder instance
+        // involves loading the layout file and passing it to the ViewHolder constructor
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_my_borrowed_books, parent, false);
         return new BookViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BorrowedBooksAdapter.BookViewHolder holder, int position) {
-        // 这里需要绑定数据到 ViewHolder 的视图
+        // need to bind the data to the ViewHolder view
         BorrowedBook book = borrowedBooksList.get(position);
         holder.titleTextView.setText(book.getTitle());
-        // 绑定其他数据...
+        // bind other data...
     }
 
     @Override
@@ -42,14 +42,14 @@ public class BorrowedBooksAdapter extends RecyclerView.Adapter<BorrowedBooksAdap
         return borrowedBooksList.size();
     }
 
-    // 内部类定义 ViewHolder
+    // inner class defines a ViewHolder
     static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView; // 假设您有一个标题视图
+        TextView titleTextView; // Suppose have a title view
 
         public BookViewHolder(View view) {
             super(view);
-            titleTextView = view.findViewById(R.id.titleTextView); // 这里使用您 item_book.xml 中定义的 ID
-            // 初始化其他视图...
+            titleTextView = view.findViewById(R.id.titleTextView); // The ID defined in item_book.xml is used here
+            // Initialize other views...
         }
     }
 }
