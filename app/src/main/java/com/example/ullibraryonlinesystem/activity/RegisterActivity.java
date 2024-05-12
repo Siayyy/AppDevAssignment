@@ -2,27 +2,24 @@ package com.example.ullibraryonlinesystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.ullibraryonlinesystem.R;
 import com.example.ullibraryonlinesystem.db.DBHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.common.api.ApiException;
-import com.google.firebase.auth.AuthResult;
-import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnCompleteListener;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText nameEditText;
     private EditText majorEditText;
-    private Button registerButton;
     private DBHelper dbHelper;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
@@ -51,12 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         Button googleRegButton = findViewById(R.id.btnGoogleReg);
-        googleRegButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
+        googleRegButton.setOnClickListener(view -> signIn());
 
 
         dbHelper = new DBHelper(this);
@@ -64,28 +55,31 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.registerPassword);
         nameEditText = findViewById(R.id.registerName);
         majorEditText = findViewById(R.id.registerMajor);
-        registerButton = findViewById(R.id.btnRegisterUser);
+        Button registerButton = findViewById(R.id.btnRegisterUser);
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = emailEditText.getText().toString().trim();
-                String password = passwordEditText.getText().toString().trim();
-                String name = nameEditText.getText().toString().trim();
-                String major = majorEditText.getText().toString().trim();
+        registerButton.setOnClickListener(view -> {
+            String email = emailEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
+            String name = nameEditText.getText().toString().trim();
+            String major = majorEditText.getText().toString().trim();
 
-                // Check for any blanks
-                if (email.isEmpty() || password.isEmpty() || name.isEmpty() || major.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "There are unfilled options, please complete them.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Insert data into the database
-                    dbHelper.addUser(email, password, name, major); // need to implement this method in DBHelper
-                    // Return to the login page after successful registration
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish(); // End the current Activity
-                }
+            // Check for any blanks
+            if (email.isEmpty() || password.isEmpty() || name.isEmpty() || major.isEmpty()) {
+                Toast.makeText(RegisterActivity.this, "There are unfilled options, please complete them.", Toast.LENGTH_SHORT).show();
+            } else {
+                // Insert data into the database
+                dbHelper.addUser(email, password, name, major); // need to implement this method in DBHelper
+                // Return to the login page after successful registration
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // End the current Activity
             }
+        });
+
+        Button backButton = findViewById(R.id.RegBackButton);
+        backButton.setOnClickListener(v -> {
+            // Go back to the previous view
+            finish();
         });
     }
     private void signIn() {
@@ -98,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                assert account != null;
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 Toast.makeText(RegisterActivity.this, "Google sign in failed: " + e.getStatusCode(), Toast.LENGTH_LONG).show();
@@ -107,16 +102,17 @@ public class RegisterActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            // Optionally, handle the new user information or navigate to another activity
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        // Optionally, handle the new user information or navigate to another activity
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
+
+
+
 }
