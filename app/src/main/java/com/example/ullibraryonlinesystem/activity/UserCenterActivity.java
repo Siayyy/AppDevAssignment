@@ -17,7 +17,7 @@ public class UserCenterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_center);
 
 
-        // 只有当之前没有实例状态保存时，才添加 UserCenterFragment
+        // Add UserCenterFragment only if no instance state is previously saved
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new UserCenterFragment())

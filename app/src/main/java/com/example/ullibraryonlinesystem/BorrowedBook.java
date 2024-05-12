@@ -7,7 +7,7 @@ public class BorrowedBook {
         private String synopsis;
         private String coverImagePath;
 
-        // 构造函数
+        // constructor
         public BorrowedBook(int bookId, String title, String author, String synopsis, String coverImagePath) {
                 this.bookId = bookId;
                 this.title = title;
@@ -20,6 +20,6 @@ public class BorrowedBook {
                 return title;
         }
 
-        // 省略 getter 和 setter 方法...
+        // getter and setter...
 }
 

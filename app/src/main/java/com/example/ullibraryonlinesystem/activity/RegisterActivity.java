@@ -74,16 +74,16 @@ public class RegisterActivity extends AppCompatActivity {
                 String name = nameEditText.getText().toString().trim();
                 String major = majorEditText.getText().toString().trim();
 
-                // 检查是否有未填写的项
+                // Check for any blanks
                 if (email.isEmpty() || password.isEmpty() || name.isEmpty() || major.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "There are unfilled options, please complete them.", Toast.LENGTH_SHORT).show();
                 } else {
-                    // 将数据插入数据库
-                    dbHelper.addUser(email, password, name, major); // 你需要在 DBHelper 中实现这个方法
-                    // 注册成功后返回登录页面
+                    // Insert data into the database
+                    dbHelper.addUser(email, password, name, major); // need to implement this method in DBHelper
+                    // Return to the login page after successful registration
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // 结束当前的 Activity
+                    finish(); // End the current Activity
                 }
             }
         });
