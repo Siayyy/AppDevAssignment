@@ -9,8 +9,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 
 import com.example.ullibraryonlinesystem.R;
+import com.example.ullibraryonlinesystem.databinding.ActivityLoginBinding;
 import com.example.ullibraryonlinesystem.db.DBHelper;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,11 +24,21 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
     private DBHelper dbHelper;
-
+   private ActivityLoginBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        //handle click, go to register screen
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+
 
         // 初始化控件
         dbHelper = new DBHelper(this);

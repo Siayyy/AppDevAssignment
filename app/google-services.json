@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "520376195476",
+    "project_id": "ullibaryonlinesystem",
+    "storage_bucket": "ullibaryonlinesystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520376195476:android:072be81558cc5b95251781",
+        "android_client_info": {
+          "package_name": "com.example.ullibraryonlinesystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8SbkAMSINinxYq_-BaoR6nIbRIdyl_lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
