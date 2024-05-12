@@ -16,9 +16,13 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "UserDB.db";
     private static final int DATABASE_VERSION = 1;
 
+    private static final String TABLE_USERS = "users";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_MAJOR = "major";
+
     private SQLiteDatabase database;
-
-
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,14 +30,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // creat users table
-        db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
-                "email TEXT PRIMARY KEY, " +
-                "password TEXT, " +
-                "name TEXT, " +
-                "major TEXT)");
+        // create users table
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+                + COLUMN_EMAIL + " TEXT PRIMARY KEY,"
+                + COLUMN_PASSWORD + " TEXT,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_MAJOR + " TEXT"
+                + ")";
+        db.execSQL(CREATE_USERS_TABLE);
 
-        // creat books table
+        // create books table
         db.execSQL("CREATE TABLE IF NOT EXISTS books (" +
                 "bookId INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "title TEXT, " +
@@ -51,7 +57,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('22053093@studentmail.ul.ie', '123456', 'Dennis', 'ManagementSystem')");
         db.execSQL("INSERT INTO users (email, password, name, major) VALUES ('22170871@studentmail.ul.ie', '123456', 'Wale', 'SoftwareDevelopment')");
     }
-
 
     // Method to add books to the database
     public void addBookToLibrary(String title, String author, String synopsis, String coverImagePath) {
@@ -95,7 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return bookList;
     }
 
-
     // Method to get a list of books that the user has borrowed
     public List<BorrowedBook> getUserBorrowedBooks(int userId) {
         List<BorrowedBook> borrowedBookList = new ArrayList<>();
@@ -133,7 +137,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // check wehther the user already exist
+    // Check whether the user already exists
     public boolean checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
@@ -143,16 +147,29 @@ public class DBHelper extends SQLiteOpenHelper {
         return count > 0;
     }
 
-    // Add the following methods to the DBHelper class
+    // Check if the email already exists
+    public boolean checkEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COLUMN_EMAIL};
+        String selection = COLUMN_EMAIL + " = ?";
+        String[] selectionArgs = {email};
+
+        Cursor cursor = db.query(TABLE_USERS, columns, selection, selectionArgs, null, null, null);
+        boolean exists = (cursor.getCount() > 0);
+        cursor.close();
+        db.close();
+        return exists;
+    }
+
+    // Add a new user to the database
     public void addUser(String email, String password, String name, String major) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("email", email);
-        contentValues.put("password", password);
-        contentValues.put("name", name);
-        contentValues.put("major", major);
-        db.insert("users", null, contentValues);
+        contentValues.put(COLUMN_EMAIL, email);
+        contentValues.put(COLUMN_PASSWORD, password);
+        contentValues.put(COLUMN_NAME, name);
+        contentValues.put(COLUMN_MAJOR, major);
+        db.insert(TABLE_USERS, null, contentValues);
         db.close();
-
-}
+    }
 }

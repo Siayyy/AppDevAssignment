@@ -67,12 +67,17 @@ public class RegisterActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty() || name.isEmpty() || major.isEmpty()) {
                 Toast.makeText(RegisterActivity.this, "There are unfilled options, please complete them.", Toast.LENGTH_SHORT).show();
             } else {
-                // Insert data into the database
-                dbHelper.addUser(email, password, name, major); // need to implement this method in DBHelper
-                // Return to the login page after successful registration
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); // End the current Activity
+                // Check if the email is already used
+                if (dbHelper.checkEmailExists(email)) {
+                    Toast.makeText(RegisterActivity.this, "Email is already used. Please use a different email.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Insert data into the database
+                    dbHelper.addUser(email, password, name, major);
+                    // Return to the login page after successful registration
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish(); // End the current Activity
+                }
             }
         });
 
