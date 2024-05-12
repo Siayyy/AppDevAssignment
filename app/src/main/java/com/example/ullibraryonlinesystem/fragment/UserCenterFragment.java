@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ullibraryonlinesystem.R;
@@ -21,9 +19,7 @@ public class UserCenterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_center, container, false);
 
         TextView logoutTextView = view.findViewById(R.id.user_center_logout);
-        logoutTextView.setOnClickListener(v -> {
-            logout();
-        });
+        logoutTextView.setOnClickListener(v -> logout());
 
         return view;
     }
@@ -34,6 +30,6 @@ public class UserCenterFragment extends Fragment {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 }
