@@ -35,6 +35,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    //firebase
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
     //implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
