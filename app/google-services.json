@@ -130,6 +130,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1091521844088-bqn0q1pcvcslp6a6mf1u24aob2v5lvna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ullibraryonlinesystem",
+            "certificate_hash": "efa7d9ca2ca1850c30b335aba80b785fb5730f2e"
+          }
+        },
+        {
           "client_id": "1091521844088-7hmn9cosm1essrii789rqk6vqqn05o4p.apps.googleusercontent.com",
           "client_type": 3
         }

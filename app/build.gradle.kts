@@ -35,13 +35,19 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    //implementation(libs.firebase.auth)
+    //firebase dependencies (commented out initially)
+    // implementation(libs.firebase.auth)
+    // implementation(libs.firebase.analytics)
+    // implementation(libs.firebase.database)
+    // implementation(libs.firebase.storage)
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.firebaseui:firebase-ui-auth:8.0.0")
+    implementation("com.google.firebase:firebase-auth:21.0.1")
+    implementation("com.google.android.gms:play-services-auth:19.0.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.google.android.material:material:1.11.0")
-    implementation ("com.firebaseui:firebase-ui-auth:8.0.0")
-    implementation ("com.google.firebase:firebase-auth:21.0.1")
-    implementation ("com.google.android.gms:play-services-auth:19.0.0")
+
 
 }
