@@ -84,7 +84,7 @@
                 android:id="@+id/admin_center_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UL Library Online System"
+                android:text="Library Online System"
                 android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:textColor="#F2FFFFFF"

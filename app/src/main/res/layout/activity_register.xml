@@ -50,73 +50,88 @@
 
             <TextView
                 android:id="@+id/registerSubtitle"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
                 android:text="The library is a treasure trove of human wisdom."
                 android:textSize="15sp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/registerTitle"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/registerTitle" />
 
 
-                        <EditText
-                            android:id="@+id/registerEmail"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Please input your email."
-                            app:layout_constraintTop_toBottomOf="@+id/registerSubtitle"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+            <EditText
+                android:id="@+id/registerEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Please input your email."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerSubtitle" />
 
-                        <EditText
-                            android:id="@+id/registerPassword"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:hint="Please input your password."
-                            app:layout_constraintTop_toBottomOf="@+id/registerEmail"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+            <EditText
+                android:id="@+id/registerPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Please input your password."
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
-                        <EditText
-                            android:id="@+id/registerName"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Please input your name."
-                            app:layout_constraintTop_toBottomOf="@+id/registerPassword"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+            <EditText
+                android:id="@+id/registerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Please input your name."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
-                        <EditText
-                            android:id="@+id/registerMajor"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Please input your department or major."
-                            app:layout_constraintTop_toBottomOf="@+id/registerName"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+            <EditText
+                android:id="@+id/registerMajor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Please input your department or major."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerName" />
 
-                        <Button
-                            android:id="@+id/btnRegisterUser"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="REGISTER NOW"
-                            app:layout_constraintTop_toBottomOf="@+id/registerMajor"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-                        <Button
-                            android:id="@+id/btnGoogleReg"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="REGISTER via Google"
-                            app:layout_constraintTop_toBottomOf="@+id/btnRegisterUser"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+            <Button
+                android:id="@+id/btnRegisterUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="REGISTER NOW"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerMajor"
+                app:layout_constraintVertical_bias="0.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnGoogleReg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="REGISTER via Google"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegisterUser"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/RegBackButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="BACK"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnGoogleReg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
